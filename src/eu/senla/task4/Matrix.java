@@ -36,9 +36,9 @@ public class Matrix {
     private ArrayList<Integer> arrayInteger;
     private StringBuilder sb;
 
-    private String strChar = "FIDrwGgpAoEQsUgpIoWnpRnLnfEd";
     private String[][] strMatrix;
-    private String[] strParsingMatrix, strMainDiagonal, strReversDiagonal;
+    private String[] strMainDiagonal;
+    private String[] strReversDiagonal;
 
     public String randomDouble(){
        return new DecimalFormat("000.00").format( Math.random() * 1000);
@@ -48,6 +48,7 @@ public class Matrix {
         StringBuilder sb = new StringBuilder();
         Random rand = new Random();
         for (int i = 0; i < 6; i++) {
+            String strChar = "FIDrwGgpAoEQsUgpIoWnpRnLnfEd";
             sb.append(strChar.charAt(rand.nextInt(strChar.length())));
         }
         return sb.toString();
@@ -58,7 +59,7 @@ public class Matrix {
         strMatrix = new String[10][10];
         strMainDiagonal = new String[strMatrix.length];
         strReversDiagonal = new String[strMatrix.length];
-        strParsingMatrix = new String[strMatrix.length * 2];
+        //String[] strParsingMatrix = new String[strMatrix.length * 2];
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
                 strMatrix[i][j] = index==0 ? randomDouble() : randomString();
