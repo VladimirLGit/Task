@@ -5,5 +5,8 @@ public class Main {
         Matrix m = new Matrix();
         m.createMatrix();
         m.printMatrix();
+        m.parsingMatrix();
+        m.showResultDiagonal();
+        m.showResult();
     }
 }

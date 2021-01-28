@@ -90,10 +90,10 @@ public class BaseType {
         int a = 3;
         double b = 4.6;
         double c = a+b;
-        System.out.println("""
+        /*System.out.println("""
                 int a = 3;
                 double b = 4.6;
-                double c = a+b;""");
+                double c = a+b;""");*/
         System.out.println("c = " + c);
         fByte = 3;
         fShort = 4000;
