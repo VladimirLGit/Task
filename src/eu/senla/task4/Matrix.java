@@ -47,10 +47,9 @@ public class Matrix {
     public String randomString(){
         StringBuilder sb = new StringBuilder();
         Random rand = new Random();
-        for (int i = 0; i < 6; i++) {
-            String strChar = "FIDrwGgpAoEQsUgpIoWnpRnLnfEd";
+        String strChar = "FIDrwGgpAoEQsUgpIoWnpRnLnfEd";
+        for (int i = 0; i < 6; i++)
             sb.append(strChar.charAt(rand.nextInt(strChar.length())));
-        }
         return sb.toString();
     }
 
