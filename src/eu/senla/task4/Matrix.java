@@ -45,11 +45,13 @@ public class Matrix {
     }
 
     public String randomString(){
-        StringBuilder sb = new StringBuilder();
+        StringBuilder sb = new StringBuilder(6);
         Random rand = new Random();
-        String strChar = "FIDrwGgpAoEQsUgpIoWnpRnLnfEd";
-        for (int i = 0; i < 6; i++)
-            sb.append(strChar.charAt(rand.nextInt(strChar.length())));
+        //String strChar = "FIDrwGgpAoEQsUgpIoWnpRnLnfEd";
+        for (int i = 0; i < 6; i++) {
+            sb.append((char) ('a' + rand.nextInt('a'-'Z')));
+        }
+            //sb.append(strChar.charAt(rand.nextInt(strChar.length())));
         return sb.toString();
     }
 
