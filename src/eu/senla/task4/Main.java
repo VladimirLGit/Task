@@ -8,7 +8,7 @@ public class Main {
         m.parsingMatrix();
         m.showResultDiagonal();
         m.showResult();
-        System.out.println("Display characters: 'a'-'Z'");
+        System.out.println("Display characters: 'A'-'z'");
         for (char c = 'A'; c <= 'z'; c++)
             System.out.print(c);
         System.out.println("");
