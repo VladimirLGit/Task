@@ -7,7 +7,7 @@ import java.util.Random;
     private static final int SIZE = VALUES.length;
     private static final Random RANDOM = new Random();
 
-    public static Shape getRandomLetter()  {
+    public static Shape getRandomShape()  {
         return VALUES[RANDOM.nextInt(SIZE)];
     }
 };
@@ -17,7 +17,7 @@ public class Container {
     private int height = 0;
     private int diagonal = 0;
     public Shape shape;
-    //public Shape shape = Shape.getRandomLetter();
+    //public Shape shape = Shape.getRandomShape();
 
     Container(int height, int diagonal, Shape shape){
         this.height = height;

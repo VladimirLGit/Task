@@ -3,7 +3,7 @@ package eu.senla.task5;
 import java.util.ArrayList;
 
 public class Base<T> implements Action {
-    private int maxLengthItem = 0;
+    protected int maxLengthItem = 0;
     private int countItem = 0;
     private ArrayList<T> items;
 
@@ -23,6 +23,25 @@ public class Base<T> implements Action {
     @Override
     public boolean remove(Object item) {
         return items.remove(item);
+    }
+
+    @Override
+    public Object getItem(int index) {
+        if (index<items.size())
+            return items.get(index);
+        else
+            return null;
+    }
+
+    @Override
+    public Object extract(Object extItem) {
+        int index = items.indexOf(extItem);
+        if (index != -1) {
+            items.remove(extItem);
+            return extItem;
+        }
+        else
+            return null;
     }
 
     @Override
