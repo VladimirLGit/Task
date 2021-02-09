@@ -1,3 +1,7 @@
+// This is a personal academic project. Dear PVS-Studio, please check it.
+
+// PVS-Studio Static Code Analyzer for C, C++, C#, and Java: http://www.viva64.com
+
 package eu.senla.task4;
 
 /*
@@ -48,8 +52,13 @@ public class Matrix {
         StringBuilder sb = new StringBuilder(6);
         Random rand = new Random();
         //String strChar = "FIDrwGgpAoEQsUgpIoWnpRnLnfEd";
+        char c;
         for (int i = 0; i < 6; i++) {
-            sb.append((char) ('a' + rand.nextInt('a'-'Z')));
+            do {
+                c = (char) ('A' + rand.nextInt('z'-'A'));
+            } while (c<'a'+1 && c>'Z'-1);
+
+            sb.append(c);
         }
             //sb.append(strChar.charAt(rand.nextInt(strChar.length())));
         return sb.toString();
@@ -100,7 +109,7 @@ public class Matrix {
         parserDiagonal(strMainDiagonal);
         parserDiagonal(strReversDiagonal);
         int index = sb.lastIndexOf(",");
-        sb.deleteCharAt(index);
+        if (index != -1) sb.deleteCharAt(index);
     }
 
 

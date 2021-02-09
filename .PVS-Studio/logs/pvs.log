@@ -1,0 +1,69 @@
+2021-02-02 11:03:10 [INFO ] c.p.r.NativeLoader:63 - ********************************
+2021-02-02 11:03:10 [INFO ] c.p.r.NativeLoader:64 - Native library search paths: 
+2021-02-02 11:03:10 [INFO ] c.p.r.NativeLoader:948 - C:\Users\Vladimir\AppData\Roaming\PVS-Studio-Java\7.11.44138
+2021-02-02 11:03:10 [INFO ] c.p.r.NativeLoader:948 - .
+2021-02-02 11:03:10 [INFO ] c.p.r.NativeLoader:948 - C:\Users\Vladimir\AppData\Roaming\PVS-Studio-Java\7.11.44138\..
+2021-02-02 11:03:10 [INFO ] c.p.r.NativeLoader:948 - C:\Users\Vladimir\AppData\Roaming\PVS-Studio-Java\7.11.44138\..\..
+2021-02-02 11:03:10 [INFO ] c.p.r.NativeLoader:948 - C:\Users\Vladimir\AppData\Roaming\PVS-Studio-Java\7.11.44138\..\..\build
+2021-02-02 11:03:10 [INFO ] c.p.r.NativeLoader:66 - Additional path: native/win
+2021-02-02 11:03:10 [INFO ] c.p.r.NativeLoader:75 - Native library found: C:\Users\Vladimir\AppData\Roaming\PVS-Studio-Java\7.11.44138\native\win\analysis-core.dll
+2021-02-02 11:03:10 [INFO ] c.p.r.NativeLoader:76 - ********************************
+2021-02-02 11:03:11 [INFO ] c.p.p.JsonEvaluator:48 - Module: TestProject
+2021-02-02 11:03:11 [INFO ] c.p.p.JsonEvaluator:49 - Sources:
+2021-02-02 11:03:11 [INFO ] c.p.p.JsonEvaluator:75 - C:/Users/Vladimir/Documents/GitHub/Task1/src
+2021-02-02 11:03:11 [INFO ] c.p.p.JsonEvaluator:51 - Classpath:
+2021-02-02 11:03:11 [INFO ] c.p.p.JsonEvaluator:75 - C:/Program Files/Java/jdk1.8.0_271/jre/lib/ext/jaccess.jar
+2021-02-02 11:03:11 [INFO ] c.p.p.JsonEvaluator:75 - C:/Program Files/Java/jdk1.8.0_271/jre/lib/rt.jar
+2021-02-02 11:03:11 [INFO ] c.p.p.JsonEvaluator:75 - C:/Program Files/Java/jdk1.8.0_271/jre/lib/plugin.jar
+2021-02-02 11:03:11 [INFO ] c.p.p.JsonEvaluator:75 - C:/Program Files/Java/jdk1.8.0_271/jre/lib/javaws.jar
+2021-02-02 11:03:11 [INFO ] c.p.p.JsonEvaluator:75 - C:/Program Files/Java/jdk1.8.0_271/jre/lib/ext/sunjce_provider.jar
+2021-02-02 11:03:11 [INFO ] c.p.p.JsonEvaluator:75 - C:/Program Files/Java/jdk1.8.0_271/jre/lib/management-agent.jar
+2021-02-02 11:03:11 [INFO ] c.p.p.JsonEvaluator:75 - C:/Program Files/Java/jdk1.8.0_271/jre/lib/ext/dnsns.jar
+2021-02-02 11:03:11 [INFO ] c.p.p.JsonEvaluator:75 - C:/Program Files/Java/jdk1.8.0_271/jre/lib/jce.jar
+2021-02-02 11:03:11 [INFO ] c.p.p.JsonEvaluator:75 - C:/Program Files/Java/jdk1.8.0_271/jre/lib/jfr.jar
+2021-02-02 11:03:11 [INFO ] c.p.p.JsonEvaluator:75 - C:/Program Files/Java/jdk1.8.0_271/jre/lib/ext/jfxrt.jar
+2021-02-02 11:03:11 [INFO ] c.p.p.JsonEvaluator:75 - C:/Program Files/Java/jdk1.8.0_271/jre/lib/ext/zipfs.jar
+2021-02-02 11:03:11 [INFO ] c.p.p.JsonEvaluator:75 - C:/Program Files/Java/jdk1.8.0_271/jre/lib/resources.jar
+2021-02-02 11:03:11 [INFO ] c.p.p.JsonEvaluator:75 - C:/Program Files/Java/jdk1.8.0_271/jre/lib/ext/nashorn.jar
+2021-02-02 11:03:11 [INFO ] c.p.p.JsonEvaluator:75 - C:/Program Files/Java/jdk1.8.0_271/jre/lib/ext/sunmscapi.jar
+2021-02-02 11:03:11 [INFO ] c.p.p.JsonEvaluator:75 - C:/Program Files/Java/jdk1.8.0_271/jre/lib/ext/cldrdata.jar
+2021-02-02 11:03:11 [INFO ] c.p.p.JsonEvaluator:75 - C:/Program Files/Java/jdk1.8.0_271/jre/lib/ext/access-bridge-64.jar
+2021-02-02 11:03:11 [INFO ] c.p.p.JsonEvaluator:75 - C:/Program Files/Java/jdk1.8.0_271/jre/lib/charsets.jar
+2021-02-02 11:03:11 [INFO ] c.p.p.JsonEvaluator:75 - C:/Program Files/Java/jdk1.8.0_271/jre/lib/ext/sunec.jar
+2021-02-02 11:03:11 [INFO ] c.p.p.JsonEvaluator:75 - C:/Program Files/Java/jdk1.8.0_271/jre/lib/jfxswt.jar
+2021-02-02 11:03:11 [INFO ] c.p.p.JsonEvaluator:75 - C:/Program Files/Java/jdk1.8.0_271/jre/lib/jsse.jar
+2021-02-02 11:03:11 [INFO ] c.p.p.JsonEvaluator:75 - C:/Program Files/Java/jdk1.8.0_271/jre/lib/ext/localedata.jar
+2021-02-02 11:03:11 [INFO ] c.p.p.JsonEvaluator:75 - C:/Program Files/Java/jdk1.8.0_271/jre/lib/deploy.jar
+2021-02-02 11:03:11 [INFO ] c.p.p.JsonEvaluator:75 - C:/Program Files/Java/jdk1.8.0_271/jre/lib/ext/sunpkcs11.jar
+2021-02-02 11:03:12 [INFO ] c.p.p.IncrementalLauncher:187 - Load model from cache...
+2021-02-02 11:03:12 [INFO ] c.p.p.IncrementalLauncher:191 - Build model incrementally...
+2021-02-02 11:03:12 [INFO ] c.p.p.IncrementalLauncher:192 - Current time: 1612252992330
+2021-02-02 11:03:12 [INFO ] c.p.p.IncrementalLauncher:193 - Last build time: 1612184577949
+2021-02-02 11:03:12 [INFO ] c.p.p.IncrementalLauncher:194 - Keyset size: 8
+2021-02-02 11:03:12 [INFO ] c.p.p.IncrementalLauncher:195 - Input sources size: 8
+2021-02-02 11:03:12 [INFO ] c.p.p.IncrementalLauncher:201 - Removed sources size: 0
+2021-02-02 11:03:12 [INFO ] c.p.p.IncrementalLauncher:202 - Added sources size: 0
+2021-02-02 11:03:12 [INFO ] c.p.p.IncrementalLauncher:203 - Common sources size: 8
+2021-02-02 11:03:12 [INFO ] c.p.p.IncrementalLauncher:214 - Incremental sources size: 2
+2021-02-02 11:03:12 [INFO ] c.p.p.IncrementalLauncher:217 - Old types size: 8
+2021-02-02 11:03:12 [INFO ] c.p.p.IncrementalLauncher:228 - Changed types size: 2
+2021-02-02 11:03:12 [INFO ] c.p.p.IncrementalLauncher:230 - Enter types loop
+2021-02-02 11:03:12 [INFO ] c.p.p.IncrementalLauncher:252 - Exit types loop
+2021-02-02 11:03:12 [INFO ] c.p.p.IncrementalLauncher:264 - Old packages size: 7
+2021-02-02 11:03:12 [INFO ] c.p.p.IncrementalLauncher:273 - Data processed
+2021-02-02 11:03:12 [INFO ] c.p.p.IncrementalLauncher:279 - Added: 0
+2021-02-02 11:03:12 [INFO ] c.p.p.IncrementalLauncher:280 - Removed: 0
+2021-02-02 11:03:12 [INFO ] c.p.p.IncrementalLauncher:281 - Modified : 2
+2021-02-02 11:03:13 [INFO ] c.p.p.IncrementalLauncher:303 - Cache saving started.
+2021-02-02 11:03:13 [WARN ] c.p.p.IncrementalLauncher:310 - Spoon compile error: The package java.text is accessible from more than one module: <unnamed>, java.base at C:\Users\Vladimir\Documents\GitHub\Task1\src\eu\senla\task4\Matrix.java:23
+spoon.support.compiler.SnippetCompilationError: The package java.text is accessible from more than one module: <unnamed>, java.base at C:\Users\Vladimir\Documents\GitHub\Task1\src\eu\senla\task4\Matrix.java:23
+	at spoon.support.compiler.jdt.JDTBasedSpoonCompiler.reportProblemsWhenCompiling(JDTBasedSpoonCompiler.java:609)
+	at spoon.support.compiler.jdt.JDTBasedSpoonCompiler.compile(JDTBasedSpoonCompiler.java:167)
+	at com.pvsstudio.projects.IncrementalLauncher.saveCache(IncrementalLauncher.java:306)
+	at com.pvsstudio.projects.Module.build(Module.java:384)
+	at com.pvsstudio.runner.ModuleWorker.run(ModuleWorker.java:49)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+2021-02-02 11:03:13 [INFO ] c.p.p.IncrementalLauncher:346 - Cache saving finished.
+2021-02-02 11:03:13 [INFO ] c.p.p.Module:388 - Model build success.
