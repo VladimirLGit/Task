@@ -29,8 +29,8 @@ public class Container {
         double volume = 0;
         switch (shape){
             case CONE:
-                volume = 1/3 * PI*Math.pow(diagonal/2,2)*height;
-                //V = 1/3 πR2H
+                volume = PI*Math.pow(diagonal/2,2)*height/3;
+                //V = 1/3 πR^2H
                 break;
             case SQUARE:
                 volume = 2*Math.pow(diagonal/2,2)*height;
@@ -59,7 +59,7 @@ public class Container {
 
     @Override
     public String toString() {
-        return Double.toString(weightContainer());
+        return Double.toString(weightContainer()/1_000_000);
     }
 
     public void setDensityWater(double densityWater) {

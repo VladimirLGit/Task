@@ -15,7 +15,7 @@ public class Main {
     public static final String ANSI_WHITE_BACKGROUND = "\u001B[47m";
 
     public static void main(String[] args) {
-        for (int r = 0; r <= 255; r+=10) {
+        /*for (int r = 0; r <= 255; r+=10) {
             for (int g = 0; g <= 255; g+=10) {
                 for (int b = 0; b <= 255; b+=3) {
                     System.out.print("\u001B[48;2;"+r+";"+g+";"+b+"m"+" " + ANSI_RESET);
@@ -32,7 +32,7 @@ public class Main {
         }
         System.out.print("\u001B[38;2;"+120+";"+223+";"+250+"m"+"Count: "); //+ ANSI_RESET
 
-        /*for (int i = 200; i < 300; i++) {
+       for (int i = 200; i < 300; i++) {
             String num = Integer.toString(i);
             System.out.print(num);
             try {
@@ -45,5 +45,10 @@ public class Main {
                 System.out.write( '\b');
             }
         }*/
+        Port port = new Port(10);
+        port.createContainers();
+        port.createShips();
+        port.loadContainer();
+        System.out.println(port.calculateTheVolume());
     }
 }

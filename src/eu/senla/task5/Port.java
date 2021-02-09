@@ -2,8 +2,6 @@ package eu.senla.task5;
 
 import java.util.Random;
 
-import static java.lang.Math.random;
-
     enum SizeShip {
     SINGLE(1), DOUBLE(2);
     private static final SizeShip[] VALUES = values();
@@ -25,29 +23,56 @@ import static java.lang.Math.random;
 
 public class Port extends Base<Ship> {
     private Yard yardContainers;
-    Port(int loadItems) {
-        super(loadItems);
+    Port(int maxLength) {
+        super(maxLength);
         yardContainers = new Yard(100);
+    }
+
+    public void createContainers(){
+        yardContainers.createContainers();
     }
 
     public void createShips(){
         for (int i = 0; i < this.maxLengthItem; i++) {
-           this.add(new Ship(SizeShip.getRandomSize().getSize()));
+            Ship ship = new Ship(SizeShip.getRandomSize().getSize());
+            for (int j = 0; j < ship.maxLengthItem; j++) {
+                ship.createDeck();
+            }
+            this.add(ship);
         }
     };
 
-    public boolean loadContainer(){
-        int space;
-        for (int i = 0; i < this.maxLengthItem; i++) {
-           Ship ship = (Ship) this.getItem(i);
-           if (ship!=null)
-
+    public void loadContainer(){
+        int space = 0;
+        int indexContainer;
+        for (int i = 0; i < this.countItems(); i++) {
+            indexContainer = 0;
+            Ship ship = (Ship) this.getItem(i);
+            if (ship!=null)
                do {
+                   Container container = (Container) yardContainers.getItem(indexContainer);
+                   if (!ship.addContainer(container))
+                       indexContainer++;
+                   else
+                       yardContainers.extract(container);
                    space = ship.amountOfSpace();
-                   ship.add(yardContainers.extract(yardContainers.getItem(i)));
-               } while (space==0);
+               } while (space!=0);
+        }
+    };
+
+    public String calculateTheVolume() {
+        double sumVolumes = 0;
+        for (int i = 0; i < this.countItems(); i++) {
+            try {
+                Ship ship = (Ship) this.getItem(i);
+                String strItem = ship.toString();
+                sumVolumes += Double.parseDouble(strItem);
+            } catch (NumberFormatException nfe)
+            {
+                sumVolumes += 0;
+            }
 
         }
-        return false;
-    };
+        return Double.toString(sumVolumes);
+    }
 }
