@@ -1,5 +1,8 @@
 package eu.senla.task5;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 import java.util.Random;
 
     enum Shape {CYLINDER, SQUARE, CONE;
@@ -10,7 +13,7 @@ import java.util.Random;
     public static Shape getRandomShape()  {
         return VALUES[RANDOM.nextInt(SIZE)];
     }
-};
+}
 public class Container {
     private static final double PI = 3.1415;
     private double densityWater = 0.0;
@@ -43,8 +46,14 @@ public class Container {
         };
         return volume;
 
-    };
+    }
+    private static double round(double value, int places) {
+        if (places < 0) throw new IllegalArgumentException();
 
+        BigDecimal bd = new BigDecimal(Double.toString(value));
+        bd = bd.setScale(places, RoundingMode.HALF_UP);
+        return bd.doubleValue();
+    }
     public double weightContainer(){
         return densityWater*volumeShape();
     };
@@ -59,7 +68,12 @@ public class Container {
 
     @Override
     public String toString() {
-        return Double.toString(weightContainer()/1_000_000);
+        //return  String.format("10.6f",weightContainer());
+
+        double x = weightContainer();
+        return String.format("%.8f", x);
+        //return new DecimalFormat( "###.##" ).format(x);
+        //return Double.toString( (long)(x > 0 ? x * 1000 + 0.5 : x * 1000 - 0.5)/1e3 );
     }
 
     public void setDensityWater(double densityWater) {
