@@ -11,6 +11,6 @@ public class Main {
         System.out.println("Display characters: 'A'-'z'");
         for (char c = 'A'; c <= 'z'; c++)
             System.out.print(c);
-        System.out.println("");
+        System.out.println();
     }
 }
