@@ -1,8 +1,11 @@
+// This is a personal academic project. Dear PVS-Studio, please check it.
+
+// PVS-Studio Static Code Analyzer for C, C++, C#, and Java: http://www.viva64.com
+
 package eu.senla.task5;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.text.DecimalFormat;
 import java.util.Random;
 
     enum Shape {CYLINDER, SQUARE, CONE;
@@ -55,7 +58,7 @@ public class Container {
         return bd.doubleValue();
     }
     public double weightContainer(){
-        return densityWater*volumeShape();
+        return densityWater*volumeShape()/1000;
     };
 
     public int getDiagonal() {
@@ -71,7 +74,8 @@ public class Container {
         //return  String.format("10.6f",weightContainer());
 
         double x = weightContainer();
-        return String.format("%.8f", x);
+        System.out.print(String.format("weight = %.3f\t", x));
+        return String.format("%.3f", x);
         //return new DecimalFormat( "###.##" ).format(x);
         //return Double.toString( (long)(x > 0 ? x * 1000 + 0.5 : x * 1000 - 0.5)/1e3 );
     }

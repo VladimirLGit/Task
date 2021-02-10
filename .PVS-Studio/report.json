@@ -1,3 +1,76 @@
 {
-  "warnings": []
+  "warnings": [
+    {
+      "code": "V6094",
+      "cwe": 682,
+      "level": 1,
+      "positions": [
+        {
+          "file": "C:\\Users\\Vladimir\\Documents\\GitHub\\Task1\\src\\eu\\senla\\task5\\Container.java",
+          "line": 38,
+          "endLine": 38,
+          "column": 38,
+          "endColumn": 47,
+          "navigation": {
+            "previousLine": 17440,
+            "currentLine": -583073105,
+            "nextLine": 0,
+            "columns": 60
+          }
+        }
+      ],
+      "message": "The expression was implicitly cast from \u0027int\u0027 type to \u0027double\u0027 type. Consider utilizing an explicit type cast to avoid the loss of a fractional part. An example: double A \u003d (double)(X) / Y;.",
+      "projects": [],
+      "favorite": false,
+      "falseAlarm": false
+    },
+    {
+      "code": "V6094",
+      "cwe": 682,
+      "level": 1,
+      "positions": [
+        {
+          "file": "C:\\Users\\Vladimir\\Documents\\GitHub\\Task1\\src\\eu\\senla\\task5\\Container.java",
+          "line": 42,
+          "endLine": 42,
+          "column": 37,
+          "endColumn": 46,
+          "navigation": {
+            "previousLine": 71616,
+            "currentLine": -1219494888,
+            "nextLine": 0,
+            "columns": 57
+          }
+        }
+      ],
+      "message": "The expression was implicitly cast from \u0027int\u0027 type to \u0027double\u0027 type. Consider utilizing an explicit type cast to avoid the loss of a fractional part. An example: double A \u003d (double)(X) / Y;.",
+      "projects": [],
+      "favorite": false,
+      "falseAlarm": false
+    },
+    {
+      "code": "V6094",
+      "cwe": 682,
+      "level": 1,
+      "positions": [
+        {
+          "file": "C:\\Users\\Vladimir\\Documents\\GitHub\\Task1\\src\\eu\\senla\\task5\\Container.java",
+          "line": 46,
+          "endLine": 46,
+          "column": 38,
+          "endColumn": 47,
+          "navigation": {
+            "previousLine": 281834,
+            "currentLine": -1219510114,
+            "nextLine": 0,
+            "columns": 58
+          }
+        }
+      ],
+      "message": "The expression was implicitly cast from \u0027int\u0027 type to \u0027double\u0027 type. Consider utilizing an explicit type cast to avoid the loss of a fractional part. An example: double A \u003d (double)(X) / Y;.",
+      "projects": [],
+      "favorite": false,
+      "falseAlarm": false
+    }
+  ]
 }

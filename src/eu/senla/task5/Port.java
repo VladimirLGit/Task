@@ -1,3 +1,7 @@
+// This is a personal academic project. Dear PVS-Studio, please check it.
+
+// PVS-Studio Static Code Analyzer for C, C++, C#, and Java: http://www.viva64.com
+
 package eu.senla.task5;
 
 import java.util.Random;
@@ -56,7 +60,7 @@ public class Port extends Base<Ship> {
                    else
                        yardContainers.extract(container);
                    space = ship.amountOfSpace();
-               } while (space!=0);
+               } while (space!=0 || indexContainer<yardContainers.countItems());
         }
     };
 
@@ -65,6 +69,7 @@ public class Port extends Base<Ship> {
         for (int i = 0; i < this.countItems(); i++) {
             try {
                 Ship ship = (Ship) this.getItem(i);
+                System.out.print("#" + (i+1) + " ");
                 String strItem = ship.toString();
                 sumVolumes += Double.parseDouble(strItem);
             } catch (NumberFormatException nfe)

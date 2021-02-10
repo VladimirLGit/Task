@@ -1,3 +1,7 @@
+// This is a personal academic project. Dear PVS-Studio, please check it.
+
+// PVS-Studio Static Code Analyzer for C, C++, C#, and Java: http://www.viva64.com
+
 package eu.senla.task5;
 
 
@@ -49,6 +53,6 @@ public class Main {
         port.createContainers();
         port.createShips();
         port.loadContainer();
-        System.out.println(port.calculateTheVolume());
+        System.out.println("total weight of all ships = " + port.calculateTheVolume() + " tons");
     }
 }

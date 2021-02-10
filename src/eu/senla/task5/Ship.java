@@ -1,3 +1,7 @@
+// This is a personal academic project. Dear PVS-Studio, please check it.
+
+// PVS-Studio Static Code Analyzer for C, C++, C#, and Java: http://www.viva64.com
+
 package eu.senla.task5;
 
 public class Ship extends Base<Deck>{
@@ -54,10 +58,13 @@ public class Ship extends Base<Deck>{
     @Override
     public String toString() {
         double weight = 0.0;
+        System.out.println("Ship deck = " + this.countItems());
         for (int i = 0; i < this.countItems(); i++) {
             Deck deck = (Deck) this.getItem(i);
             weight += Double.parseDouble(deck.toString());
         }
+        System.out.printf("total weight of all containers on the ship = %.3f tons%n",weight);
+
         return Double.toString(weight);
     }
 }
