@@ -5,8 +5,7 @@
 package eu.senla.task5;
 
 import java.util.Random;
-
-    enum SizeShip {
+enum SizeShip {
     SINGLE(1), DOUBLE(2);
     private static final SizeShip[] VALUES = values();
     private static final int SIZE = VALUES.length;
@@ -69,7 +68,7 @@ public class Port extends Base<Ship> {
         for (int i = 0; i < this.countItems(); i++) {
             try {
                 Ship ship = (Ship) this.getItem(i);
-                System.out.print("#" + (i+1) + " ");
+                System.out.print(ANSI_BLUE +"#" + (i+1) + ANSI_RESET + " ");
                 String strItem = ship.toString();
                 sumVolumes += Double.parseDouble(strItem);
             } catch (NumberFormatException nfe)

@@ -6,9 +6,8 @@ package eu.senla.task5;
 
 import java.util.ArrayList;
 
-public class Base<T> implements Action {
+public class Base<T> implements Action<T>,ColorText {
     protected int maxLengthItem = 0;
-    private int countItem = 0;
     private ArrayList<T> items;
 
     Base(int maxLength){
@@ -17,15 +16,15 @@ public class Base<T> implements Action {
     }
 
     @Override
-    public boolean add(Object item) {
+    public boolean add(T item) {
         if (items.size()<maxLengthItem)
-            return items.add((T) item);
+            return items.add(item);
         else
             return false;
     }
 
     @Override
-    public boolean remove(Object item) {
+    public boolean remove(T item) {
         return items.remove(item);
     }
 
@@ -35,7 +34,7 @@ public class Base<T> implements Action {
     }
 
     @Override
-    public Object getItem(int index) {
+    public T getItem(int index) {
         if (index<items.size())
             return items.get(index);
         else
@@ -44,7 +43,7 @@ public class Base<T> implements Action {
 
 
     @Override
-    public Object extract(Object extItem) {
+    public T extract(T extItem) {
         int index = items.indexOf(extItem);
         if (index != -1) {
             remove(extItem);
