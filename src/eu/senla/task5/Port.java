@@ -31,6 +31,10 @@ public class Port extends Base<Ship> {
         yardContainers = new Yard(100);
     }
 
+    public Yard getYardContainers() {
+        return yardContainers;
+    }
+
     public void createContainers(){
         yardContainers.createContainers();
     }
@@ -48,6 +52,7 @@ public class Port extends Base<Ship> {
     public void loadContainer(){
         int space = 0;
         int indexContainer;
+        int contContainers = 0;
         for (int i = 0; i < this.countItems(); i++) {
             indexContainer = 0;
             Ship ship = (Ship) this.getItem(i);
@@ -59,10 +64,57 @@ public class Port extends Base<Ship> {
                    else
                        yardContainers.extract(container);
                    space = ship.amountOfSpace();
-               } while (space!=0 || indexContainer<yardContainers.countItems());
+                   contContainers = yardContainers.countItems();
+               } while (space!=0 && indexContainer<contContainers);
         }
     };
 
+    public void transferAllContainers(Port port){
+        System.out.println("Transfer all containers");
+        int count = yardContainers.countItems();
+        while (count>0){
+            if (this.countItems()==0) {
+                port.transferAllShips(this);
+                loadContainer();
+            }
+            this.transferAllShips(port);
+            for (int i = 0; i < 10; i++) {
+                String num = Integer.toString(i);
+                System.out.print(num);
+                try {
+                    Thread.sleep(200);
+                } catch (InterruptedException e) {
+                }
+
+                for (int j = 0, k = num.length(); j < k; j++) {
+                    System.out.write( '\b');
+                }
+            }
+            count = yardContainers.countItems();
+            System.out.println("Count containers = " + count);
+        }
+    }
+
+    public void transferAllShips(Port port){
+        while (this.countItems()>0){
+            Ship ship = this.extract(this.getItem(0));
+            port.add(ship);
+            int maxContainers = 0;
+            for (int i = 0; i < ship.maxLengthItem; i++) {
+                maxContainers += ship.getItem(i).maxLengthItem;
+            }
+            while (ship.amountOfSpace()!=maxContainers || port.getYardContainers().countItems()==0 ){
+                for (int i = 0; i < ship.maxLengthItem; i++) {
+                    while (ship.getItem(i).countItems()>0) {
+                        Container container = ship.getItem(i).extract(ship.getItem(i).getItem(0));
+                        port.getYardContainers().add(container);
+                    }
+                }
+            }
+
+        }
+
+    }
     public String calculateTheVolume() {
         double sumVolumes = 0;
         for (int i = 0; i < this.countItems(); i++) {

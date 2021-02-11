@@ -5,7 +5,6 @@
 package eu.senla.task5;
 
 
-
 public class Main {
     public static final String ANSI_RESET = "\u001B[0m";
 
@@ -50,9 +49,11 @@ public class Main {
             }
         }*/
         Port port = new Port(10);
+        Port portOther = new Port(10);
         port.createContainers();
         port.createShips();
         port.loadContainer();
         System.out.println("total weight of all ships = " + port.calculateTheVolume() + " tons");
+        port.transferAllContainers(portOther);
     }
 }
