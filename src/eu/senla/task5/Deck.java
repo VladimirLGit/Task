@@ -35,6 +35,7 @@ public class Deck extends Base<Container>{
         }
         System.out.println();
         //System.out.println("================================");
+        //return String.format("%.3f", weight);
         return Double.toString(weight);
     }
 }

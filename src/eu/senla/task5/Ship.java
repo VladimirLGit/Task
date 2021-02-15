@@ -65,6 +65,7 @@ public class Ship extends Base<Deck>{
         }
         System.out.printf("total weight of all containers on the ship = %.3f tons%n",weight);
 
+        //return String.format("%.3f", weight);
         return Double.toString(weight);
     }
 }

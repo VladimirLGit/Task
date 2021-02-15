@@ -75,7 +75,8 @@ public class Container implements ColorText {
 
         double x = weightContainer();
         System.out.print(ANSI_PURPLE + String.format("weight = %.3f\t", x) + ANSI_RESET);
-        return String.format("%.3f", x);
+        //return String.format("%.3f", x);
+        return Double.toString(x);
         //return new DecimalFormat( "###.##" ).format(x);
         //return Double.toString( (long)(x > 0 ? x * 1000 + 0.5 : x * 1000 - 0.5)/1e3 );
     }
