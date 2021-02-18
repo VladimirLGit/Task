@@ -5,10 +5,16 @@
 package eu.senla.task6;
 
 
-import eu.senla.task5.Port;
+import eu.senla.task6.factory.Factory;
+import eu.senla.task6.robot.Body;
+import eu.senla.task6.robot.Head;
 
 public class Main {
     public static void main(String[] args) {
+        Factory<Body> factoryBody = new Factory<Body>(100);
+        Factory<Head> factoryHead = new Factory<Head>(100);
+
+
 
     }
 }
