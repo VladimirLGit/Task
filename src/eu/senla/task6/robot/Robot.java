@@ -3,17 +3,6 @@ package eu.senla.task6.robot;
 
 import java.util.Random;
 
-    enum TypeRobot {
-        CLEANER, COOK, DEFENDER;
-        private static final TypeRobot[] VALUES = values();
-        private static final int SIZE = VALUES.length;
-        private static final Random RANDOM = new Random();
-
-        public static TypeRobot getRandomType() {
-            return VALUES[RANDOM.nextInt(SIZE)];
-        }
-    }
-
 public class Robot implements ActionRobot {
     private String name;
     private Head head;

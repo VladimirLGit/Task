@@ -5,16 +5,18 @@
 package eu.senla.task6;
 
 
-import eu.senla.task6.factory.Factory;
-import eu.senla.task6.robot.Body;
-import eu.senla.task6.robot.Head;
+import eu.senla.task6.factory.FactoryBody;
+import eu.senla.task6.factory.FactoryHead;
+import eu.senla.task6.factory.ThreadFactoryBody;
+import eu.senla.task6.factory.ThreadFactoryHead;
+
+import java.util.concurrent.Semaphore;
 
 public class Main {
     public static void main(String[] args) {
-        Factory<Body> factoryBody = new Factory<Body>(100);
-        Factory<Head> factoryHead = new Factory<Head>(100);
-
-
+        Semaphore semaphore = new Semaphore(1); // 1 разрешение
+        ThreadFactoryBody factoryBody = new ThreadFactoryBody(new FactoryBody(semaphore,15),"factoryBody");
+        ThreadFactoryHead factoryHead = new ThreadFactoryHead(new FactoryHead(semaphore,15),"factoryHead");
 
     }
 }
