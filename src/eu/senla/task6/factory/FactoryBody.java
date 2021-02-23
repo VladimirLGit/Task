@@ -6,6 +6,8 @@ import eu.senla.task6.robot.Material;
 
 import java.util.concurrent.Semaphore;
 
+import static java.lang.Thread.sleep;
+
 
 public class FactoryBody extends Base<Body> {
     private Semaphore semaphore;
@@ -17,11 +19,14 @@ public class FactoryBody extends Base<Body> {
         this.semaphore = semaphore;
     }
     public void createBody() throws InterruptedException {
-        int count = 10;
+        int count = 1;
         semaphore.acquire();
-        while (count>0){
+        if (this.countItems()==0)
+        while (count>0 && this.countItems()<this.maxLengthItem){
             count--;
             this.add(new Body((int) (Math.random()*100), Material.getRandomMaterial()));
+            System.out.println("Create body");
+            sleep(300);
         }
         semaphore.release();
     }

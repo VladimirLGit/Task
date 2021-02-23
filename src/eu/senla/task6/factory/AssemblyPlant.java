@@ -5,6 +5,8 @@ import eu.senla.task6.robot.TypeRobot;
 
 import java.util.concurrent.Semaphore;
 
+import static java.lang.Thread.sleep;
+
 public class AssemblyPlant extends Base<Robot> implements Runnable {
     private Semaphore semaphore;
     FactoryHead factoryHead;
@@ -23,15 +25,28 @@ public class AssemblyPlant extends Base<Robot> implements Runnable {
     public void run() {
         while (this.countItems()<maxLengthItem) {
             try {
-                semaphore.acquire();
-                this.add(new Robot("R1",
-                                   factoryHead.extract(factoryHead.getItem(0)),
-                                   factoryBody.extract(factoryBody.getItem(0)),
-                                   TypeRobot.getRandomType()));
+                if (factoryHead.countItems()>0 && factoryBody.countItems()>0) {
+                    semaphore.acquire();
+                    this.add(new Robot("R1",
+                            factoryHead.extract(factoryHead.getItem(0)),
+                            factoryBody.extract(factoryBody.getItem(0)),
+                            TypeRobot.getRandomType()));
+                    System.out.println("Create Robot");
+                    sleep(2000);
+                }
+                else
+                    sleep(200);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
             semaphore.release();
+        }
+        if (this.countItems()>=maxLengthItem) {
+            try {
+                semaphore.acquire();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
     }
 }

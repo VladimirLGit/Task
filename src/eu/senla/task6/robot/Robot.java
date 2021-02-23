@@ -1,8 +1,6 @@
 package eu.senla.task6.robot;
 
 
-import java.util.Random;
-
 public class Robot implements ActionRobot {
     private String name;
     private Head head;
@@ -19,15 +17,15 @@ public class Robot implements ActionRobot {
     @Override
     public void work() {
         switch (typeRobot){
-            case CLEANER -> {
+            case CLEANER:
                 System.out.println("house cleaning");
-            }
-            case COOK -> {
+                break;
+            case COOK:
                 System.out.println("food cooking");
-            }
-            case DEFENDER -> {
+                break;
+            case DEFENDER:
                 System.out.println("perimeter protection");
-            }
+                break;
         }
     }
 }
