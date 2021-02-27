@@ -34,6 +34,14 @@ public class MyArrayList<E> implements MyList<E> {
         }
     }
 
+    public MyArrayList(Object[] e) {
+        this.arrayItem = new Object[e.length];
+        for (int i = 0; i < e.length; i++) {
+            arrayItem[i] = e[i];
+        }
+        size = e.length;
+    }
+
 
     @Override
     public boolean containsAll(Collection<?> c) {
@@ -57,7 +65,7 @@ public class MyArrayList<E> implements MyList<E> {
 
     @Override
     public E get(int index) {
-        return null;
+        return (E) arrayItem[index];
     }
 
     @Override
@@ -149,48 +157,143 @@ public class MyArrayList<E> implements MyList<E> {
 
     @Override
     public <T> T[] toArray(T[] a) {
-        return null;
+        if (a.length < size){
+            for (int i = 0; i < a.length; i++) {
+                a[i] = (T) arrayItem[i];
+            }
+            return a;
+        }
+        for (int i = 0; i < size; i++) {
+            a[i] = (T) arrayItem[i];
+        }
+        if (a.length > size)
+            a[size] = null;
+        return a;
     }
 
     @Override
     public E getItem(int index) {
-        return null;
+        return (E) arrayItem[index];
     }
 
 
     @Override
     public int indexOf(Object object) {
-        ListIterator it = listIterator();
+        ListIterator<E> it = listIterator();
         if (object==null) {
             while (it.hasNext())
                 if (it.next()==null)
-                    return it.previousIndex();
+                    return it.nextIndex();
         } else {
             while (it.hasNext())
                 if (object.equals(it.next()))
-                    return it.previousIndex();
+                    return it.nextIndex();
         }
         return -1;
     }
 
     @Override
-    public int lastIndexOf(Object o) {
-        return 0;
+    public int lastIndexOf(Object object) {
+        ListIterator<E> it = listIterator(size);
+        if (object==null) {
+            while (it.hasPrevious())
+                if (it.previous()==null)
+                    return it.nextIndex();
+        } else {
+            while (it.hasPrevious())
+                if (object.equals(it.previous()))
+                    return it.nextIndex();
+        }
+        return -1;
     }
 
     @Override
-    public ListIterator listIterator() {
-        return null;
+    public ListIterator<E> listIterator() {
+        return new ListItr(0);
     }
 
     @Override
     public ListIterator<E> listIterator(int index) {
-        return null;
+        return new ListItr(index);
+    }
+
+    private class ListItr implements ListIterator<E> {
+        private int currentPosition = 0;
+        private int lastPosition = -1;
+        ListItr(int index) {
+            super();
+            currentPosition = index - 1;
+        }
+
+        @Override
+        public boolean hasNext() {
+            return currentPosition != size;
+        }
+
+        @Override
+        public E next() {
+            int i = currentPosition + 1;
+            if (i>=0 && i<size) {
+                lastPosition = currentPosition;
+                currentPosition = i;
+                return (E) arrayItem[i];
+            }
+            else
+                return null;
+        }
+
+        public boolean hasPrevious() {
+            return currentPosition != 0;
+        }
+
+        public int nextIndex() {
+            return currentPosition;
+        }
+
+        public int previousIndex() {
+            return currentPosition - 1;
+        }
+
+        @Override
+        public void remove() {
+
+        }
+
+        @SuppressWarnings("unchecked")
+        public E previous() {
+            int i = currentPosition - 1;
+            if (i>=0 && i<size) {
+                lastPosition = currentPosition;
+                currentPosition = i;
+                return (E) arrayItem[i];
+            }
+            else
+                return null;
+        }
+
+        public void set(E e) {
+            try {
+                MyArrayList.this.set(lastPosition, e);
+            } catch (IndexOutOfBoundsException ex) {
+                throw new ConcurrentModificationException();
+            }
+        }
+
+        public void add(E e) {
+            try {
+                int i = currentPosition;
+                MyArrayList.this.add(i, e);
+                currentPosition = i + 1;
+                lastPosition = -1;
+            } catch (IndexOutOfBoundsException ex) {
+                throw new ConcurrentModificationException();
+            }
+        }
     }
 
     @Override
-    public <E1> MyList<E1> ofList(Object... e) {
-        return null;
+    public <E> MyList<E> ofList(Object... e) {
+        return new MyArrayList<E>(e);
     }
 
     @Override

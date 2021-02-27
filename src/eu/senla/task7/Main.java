@@ -35,6 +35,11 @@ public class Main {
         myArrayList.remove(2);
         System.out.println(myArrayList);
 
+        System.out.println("indexOf - 8888 -" + myArrayList.indexOf("8888"));
+        System.out.println("lastIndexOf - 8888 -" + myArrayList.lastIndexOf("8888"));
+
+        System.out.println(new MyArrayList<String>().ofList("1111","3333","5555"));
+
         currentList.add("1111");
         currentList.add("2222");
         currentList.add("3333");
@@ -59,5 +64,9 @@ public class Main {
         System.out.println(currentList);
         currentList.remove(2);
         System.out.println(currentList);
+        System.out.println("indexOf - 8888 -" + currentList.indexOf("8888"));
+        System.out.println("lastIndexOf - 8888 -" + currentList.lastIndexOf("8888"));
+
+        //System.out.println(List.of("1111","3333","5555"));
     }
 }
