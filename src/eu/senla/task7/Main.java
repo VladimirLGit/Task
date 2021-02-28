@@ -6,9 +6,21 @@ package eu.senla.task7;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Comparator;
 import java.util.List;
 
 public class Main {
+    public static class StringComparator implements Comparator {
+        @Override
+        public int compare(Object o1, Object o2) {
+            if (o1.getClass() == String.class && o2.getClass() == String.class)
+                return ((String) o1).compareTo((String) o2);
+            else if (o1.getClass() == Integer.class && o2.getClass() == Integer.class)
+                return Integer.compare((Integer) o1, (Integer) o2);
+            return 0;
+        }
+    }
+
     public static void main(String[] args) {
         ArrayList<String> currentList = new ArrayList<>();
         MyArrayList<String> myArrayList = new MyArrayList<>();
@@ -37,8 +49,12 @@ public class Main {
 
         System.out.println("indexOf - 8888 -" + myArrayList.indexOf("8888"));
         System.out.println("lastIndexOf - 8888 -" + myArrayList.lastIndexOf("8888"));
-
+        StringComparator stringComparator = new StringComparator();
+        myArrayList.sort(stringComparator);
+        System.out.println(myArrayList);
         System.out.println(new MyArrayList<String>().ofList("1111","3333","5555"));
+
+        System.out.println(myArrayList.subList(3,6));
 
         currentList.add("1111");
         currentList.add("2222");

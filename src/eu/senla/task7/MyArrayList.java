@@ -20,7 +20,7 @@ public class MyArrayList<E> implements MyList<E> {
         }
     }
 
-    public MyArrayList(Collection<? extends E> collection){
+    public MyArrayList(MyList<? extends E> collection){
         Object[] a = collection.toArray();
         if ((size = a.length) != 0) {
             //arrayItem = Arrays.copyOf(a, size, Object[].class);
@@ -40,32 +40,6 @@ public class MyArrayList<E> implements MyList<E> {
             arrayItem[i] = e[i];
         }
         size = e.length;
-    }
-
-
-    @Override
-    public boolean containsAll(Collection<?> c) {
-        return false;
-    }
-
-    @Override
-    public boolean removeAll(Collection<?> c) {
-        return false;
-    }
-
-    @Override
-    public boolean retainAll(Collection<?> c) {
-        return false;
-    }
-
-    @Override
-    public void clear() {
-
-    }
-
-    @Override
-    public E get(int index) {
-        return (E) arrayItem[index];
     }
 
     @Override
@@ -102,12 +76,12 @@ public class MyArrayList<E> implements MyList<E> {
     }
 
     @Override
-    public boolean addAll(Collection<? extends E> c) {
+    public boolean addAll(MyList<? extends E> c) {
         return false;
     }
 
     @Override
-    public boolean addAll(int index, Collection<? extends E> collection) {
+    public boolean addAll(int index, MyList<? extends E> collection) {
 //        Iterator it = collection.iterator();
 //        while (it.hasNext()) {
 //            add(index, (E) it.next());
@@ -134,25 +108,20 @@ public class MyArrayList<E> implements MyList<E> {
     }
 
     @Override
-    public boolean contains(Object o) {
-        return false;
-    }
-
-    @Override
     public Iterator<E> iterator() {
         return (Iterator<E>) Arrays.asList(arrayItem).iterator();
     }
 
     @Override
-    public Object[] toArray() {
+    public E[] toArray() {
         Object[] r = new Object[size()];
         Iterator<E> it = iterator();
         for (int i = 0; i < r.length; i++) {
             if (! it.hasNext()) // fewer elements than expected
-                return Arrays.copyOf(r, i);
+                return (E[]) Arrays.copyOf(r, i);
             r[i] = it.next();
         }
-        return r;
+        return (E[]) r;
     }
 
     @Override
@@ -336,12 +305,25 @@ public class MyArrayList<E> implements MyList<E> {
 
     @Override
     public void sort(Comparator comparator) {
-
+        for( int i=0; i < size; i++) {            // i - номер прохода
+            for (int j = size - 1; j > i; j--) {     // внутренний цикл прохода
+                if (comparator.compare(arrayItem[j - 1], arrayItem[j]) > 0) {
+                    Object x = arrayItem[j - 1];
+                    arrayItem[j - 1] = arrayItem[j];
+                    arrayItem[j] = x;
+                }
+            }
+        }
     }
 
     @Override
     public MyList<E> subList(int start, int end) {
-        return null;
+        MyArrayList<E> newArrayItem;
+        newArrayItem = new MyArrayList<E>();
+        for (int i = start; i < end; i++) {
+            newArrayItem.add((E) arrayItem[i]);
+        }
+        return newArrayItem;
     }
 
 
