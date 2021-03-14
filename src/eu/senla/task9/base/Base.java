@@ -2,11 +2,7 @@
 
 // PVS-Studio Static Code Analyzer for C, C++, C#, and Java: http://www.viva64.com
 
-package eu.senla.task6.factory;
-
-import eu.senla.task5.Action;
-import eu.senla.task5.ColorText;
-import eu.senla.task6.robot.Material;
+package eu.senla.task9.base;
 
 import java.util.ArrayList;
 
@@ -14,7 +10,7 @@ public class Base<T> implements Action<T>, ColorText {
     protected int maxLengthItem = 0;
     private ArrayList<T> items;
 
-    Base(int maxLength){
+    public Base(int maxLength){
         maxLengthItem = maxLength;
         items = new ArrayList<T>();
     }

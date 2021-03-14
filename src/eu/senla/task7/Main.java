@@ -10,7 +10,7 @@ import java.util.Comparator;
 import java.util.List;
 
 public class Main {
-    public static class StringComparator implements Comparator {
+    public static class StringComparator implements Comparator,Cloneable  {
         @Override
         public int compare(Object o1, Object o2) {
             if (o1.getClass() == String.class && o2.getClass() == String.class)
@@ -20,8 +20,16 @@ public class Main {
             return 0;
         }
     }
-
+    public static StringBuilder sb = new StringBuilder("10");
+    public static void chv(int v){
+        v += 5;
+    }
     public static void main(String[] args) {
+        int initv = 5;
+        chv(initv);
+        sb.append(initv);
+        int i = initv + Integer.parseInt(sb.toString());
+        System.out.println(i);
         ArrayList<String> currentList = new ArrayList<>();
         MyArrayList<String> myArrayList = new MyArrayList<>();
         myArrayList.add("1111");
