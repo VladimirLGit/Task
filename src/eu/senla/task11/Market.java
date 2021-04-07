@@ -25,7 +25,15 @@ public class Market {
         arrayItems = new ArrayList<>();
         arrayOrders = new ArrayList<>();
     }
-
+    private String findProductForId(int idProduct){
+        for (ItemProduct itemProduct : arrayItems) {
+            if (idProduct == itemProduct.getId()) {
+                String formatted = "%s %s".formatted(itemProduct, itemProduct.getLocalDate());
+                return formatted;
+            }
+        }
+        return "";
+    }
     private LocalDate dateGenerator(){
         LocalDate start = LocalDate.of(2021, Month.JANUARY, 1);
         long days = ChronoUnit.DAYS.between(start, LocalDate.now());
@@ -36,7 +44,12 @@ public class Market {
         try (BufferedReader br = new BufferedReader(new FileReader(FILEPATH_PRODUCTS))){
             String s;
             while((s=br.readLine())!=null){
-                arrayItems.add(ItemProduct.of(s))
+                arrayItems.add(ItemProduct.of(s));
+                if (arrayItems.size()>0) {
+                    if (arrayItems.get(arrayItems.size() - 1).getId()>lastId){
+                        lastId = arrayItems.get(arrayItems.size() - 1).getId();
+                    }
+                }
             }
         } catch (FileNotFoundException e) {
             System.err.println("Файл с таким названием не существует - " + FILEPATH_PRODUCTS);
@@ -105,10 +118,56 @@ public class Market {
             }
         }
     }
+    public void manualProductInput(){
+        int id = 0;
+        String nameProduct = "";
+        LocalDate date;
+        try(BufferedReader br = new BufferedReader (new InputStreamReader(System.in)))
+        {
+            System.out.println("Введите название продукта");
+            // чтение построчно
+            while ((nameProduct = br.readLine()) != null) {
+            }
+            date = dateGenerator();
+            arrayItems.add(new ItemProduct(++lastId, nameProduct, date));
+        }
+        catch(IOException ex){
+            System.out.println(ex.getMessage());
+        }
+    }
+    public void printListOrders(){
+        for (OrderProduct idProduct: arrayOrders) {
+            System.out.println(findProductForId(idProduct.getId()));
+        }
+    }
+    public void deleteProduct(){
+        String nameProduct = "";
+        try(BufferedReader br = new BufferedReader (new InputStreamReader(System.in)))
+        {
+            System.out.println("Введите название продукта");
+            // чтение построчно
+            while ((nameProduct = br.readLine()) != null) {
+            }
+            for (ItemProduct itemProduct : arrayItems) {
+                if (nameProduct.equals(itemProduct.getNameProduct())) {
+                    arrayItems.remove(itemProduct);
+                    break;
+                }
+            }
+        }
+        catch(IOException ex){
+            System.out.println(ex.getMessage());
+        }
+    }
     public void menuPrint(){
         System.out.println("1 - Показать весь перечень продуктов;");
         System.out.println("2 - Выбрать из списка продукт;");
         System.out.println("3 - Привезти новые продукты;");
-        System.out.println("4 - телефон;");
+        System.out.println("4 - Ввести продукт вручную;");
+        System.out.println("5 - Сохранить список продуктов;");
+        System.out.println("6 - Загрузить список покупок;");
+        System.out.println("7 - Сохранить список покупок;");
+        System.out.println("8 - Вывести список покупок;");
+        System.out.println("9 - Удалить из списка покупок продукт;");
     }
 }
