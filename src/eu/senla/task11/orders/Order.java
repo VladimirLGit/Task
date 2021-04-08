@@ -1,15 +1,15 @@
-package eu.senla.task11;
+package eu.senla.task11.orders;
 
-class OrderProduct {
+public class Order {
     private int id;
-    public OrderProduct(int id) {
+    public Order(int id) {
         this.id = id;
     }
 
-    private static OrderProduct create(int id){
-        return new OrderProduct(id);
+    private static Order create(int id){
+        return new Order(id);
     }
-    public static OrderProduct of(String s) {
+    public static Order of(String s) {
         return create(Integer.parseInt(s));
     }
 
