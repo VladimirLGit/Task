@@ -12,6 +12,9 @@ public class ListOrders extends Base<Order> {
 
     public void loadOrders(String filePath){
         String s = "";
+        while (countItems()>0){
+            remove(getItem(0));
+        }
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))){
             while((s=br.readLine())!=null){
                 add(Order.of(s));

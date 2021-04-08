@@ -69,6 +69,9 @@ public class ListProducts extends Base<ItemProduct> {
 
     public void loadProducts(String filePath){
         String s = "";
+        while (countItems()>0){
+            remove(getItem(0));
+        }
         try (BufferedReader br = new BufferedReader( new FileReader(filePath) )){
             while((s=br.readLine())!=null){
                 add(ItemProduct.of(s));
