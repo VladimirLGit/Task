@@ -5,12 +5,20 @@ import eu.senla.task11.base.Base;
 import java.io.*;
 import java.time.DateTimeException;
 import java.time.LocalDate;
+import java.util.Scanner;
 
 public class ListProducts extends Base<ItemProduct> {
 
     private int lastId;
     public ListProducts(int maxLength) {
         super(maxLength);
+    }
+    public int getLastId() {
+        return lastId;
+    }
+
+    public void setLastId(int lastId) {
+        this.lastId = lastId;
     }
 
     public String findProductForId(int idProduct){
@@ -95,13 +103,32 @@ public class ListProducts extends Base<ItemProduct> {
         }
     }
 
-    public int getLastId() {
-        return lastId;
+    public void selectedProduct(){
+        int x = 0;
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Введите ID  продукта");
+        String s = scanner.next();
+        try {
+            x = Integer.parseInt(s);
+            if ( x < countItems()){
+                System.out.println( findProductForId( x ) );
+            }
+            else
+                System.out.println("Ввели неправильный ID");
+        } catch (NumberFormatException e){
+            System.out.println("Неверный ввод");
+        }
     }
 
-    public void setLastId(int lastId) {
-        this.lastId = lastId;
+    public int menuPrint(int number){
+        System.out.printf("%s - Показать весь перечень продуктов;%n", number++);
+        System.out.printf("%s - Выбрать из списка продукт;%n", number++);
+        System.out.printf("%s - Ввести продукт вручную;%n", number++);
+        System.out.printf("%s - Удалить продукт из списка;%n", number++);
+        return number;
     }
+
+
 
 
 

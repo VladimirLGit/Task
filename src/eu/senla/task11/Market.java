@@ -10,6 +10,7 @@ import eu.senla.task11.orders.Order;
 import eu.senla.task11.products.ItemProduct;
 import eu.senla.task11.products.ListProducts;
 import java.util.Random;
+import java.util.Scanner;
 
 public class Market {
     private String FILEPATH_PRODUCTS = "C:\\Users\\1077c\\IdeaProjects\\TestProject\\Products";
@@ -60,15 +61,68 @@ public class Market {
         }
     }
 
-    public void menuPrint(){
-        System.out.println("1 - Показать весь перечень продуктов;");
-        System.out.println("2 - Выбрать из списка продукт;");
-        System.out.println("3 - Привезти новые продукты;");
-        System.out.println("4 - Ввести продукт вручную;");
-        System.out.println("5 - Сохранить список продуктов;");
-        System.out.println("6 - Загрузить список покупок;");
-        System.out.println("7 - Сохранить список покупок;");
-        System.out.println("8 - Вывести список покупок;");
-        System.out.println("9 - Удалить из списка покупок продукт;");
+    public void menu(){
+        Scanner scanner = new Scanner(System.in);
+        int indexMenu = 1;
+        int x = 0;
+        String s ="";
+
+        while (x!=indexMenu){
+            indexMenu = itemsProduct.menuPrint(indexMenu);
+            indexMenu = itemsOrder.menuPrint(indexMenu);
+            indexMenu = menuPrint(indexMenu);
+            System.out.printf("%s - Для выхода из приложения введите " + indexMenu +"%n");
+            s = scanner.next();
+
+            try {
+                x = Integer.parseInt(s);
+            } catch (NumberFormatException e){
+                System.out.println("Неверный ввод");
+            }
+
+            switch (x){
+                case 1:
+                    printListProducts();
+                    break;
+                case 2:
+                    itemsProduct.selectedProduct();
+                    break;
+                case 3:
+                    itemsProduct.manualProductInput();
+                    break;
+                case 4:
+                    itemsProduct.deleteProduct();
+                    break;
+                case 5:
+                    printListOrders();
+                    break;
+                case 6:
+                    //.deleteProduct();
+                    break;
+                case 7:
+                    createFoods();
+                    break;
+                case 8:
+                    itemsProduct.saveProducts(FILEPATH_PRODUCTS);
+                    break;
+                case 9:
+                    itemsProduct.loadProducts(FILEPATH_PRODUCTS);
+                    break;
+                case 10:
+                    itemsOrder.saveOrders(FILEPATH_ORDERS);
+                    break;
+                case 11:
+                    itemsOrder.loadOrders(FILEPATH_ORDERS);
+                    break;
+            }
+        }
+    }
+
+    public int menuPrint(int number){
+        System.out.printf("%s - Привезти новые продукты;%n", number++);
+        System.out.printf("%s - Сохранить список продуктов;%n", number++);
+        System.out.printf("%s - Загрузить список покупок;%n", number++);
+        System.out.printf("%s - Сохранить список покупок;%n", number++);
+        return number;
     }
 }

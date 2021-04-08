@@ -38,4 +38,10 @@ public class ListOrders extends Base<Order> {
         }
     }
 
+    public int menuPrint(int number){
+        System.out.printf("%s - Вывести список покупок;%n", number++);
+        System.out.printf("%s - Удалить из списка покупок продукт;%n", number++);
+        return number;
+    }
+
 }
