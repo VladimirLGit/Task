@@ -73,7 +73,7 @@ public class ItemProduct {
     @Override
     public String toString() {
         return  id +
-                '/' + nameProduct +
-                '/' + localDate;
+                "/" + nameProduct +
+                "/" + localDate;
     }
 }

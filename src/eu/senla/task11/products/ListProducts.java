@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 public class ListProducts extends Base<ItemProduct> {
 
-    private int lastId;
+    private int lastId = 0;
     public ListProducts(int maxLength) {
         super(maxLength);
     }
@@ -24,46 +24,34 @@ public class ListProducts extends Base<ItemProduct> {
     public String findProductForId(int idProduct){
         for (ItemProduct itemProduct : items) {
             if (idProduct == itemProduct.getId()) {
-                String formatted = "%s %s".formatted(itemProduct, itemProduct.getLocalDate());
-                return formatted;
+                return String.format("%s %s", itemProduct, itemProduct.getLocalDate());
             }
         }
-        return "";
+        return  idProduct + " not found id";
     }
 
-    public void manualProductInput(){
+    public void manualProductInput(Scanner scanner){
         int id = 0;
-        String nameProduct = "";
-        try(BufferedReader br = new BufferedReader ( new InputStreamReader(System.in) ))
-        {
-            System.out.println("Введите название продукта");
-            // чтение построчно
-            while ((nameProduct = br.readLine()) != null) {
-            }
-            add(new ItemProduct(++lastId, nameProduct));
-        }
-        catch(IOException ex){
-            System.out.println(ex.getMessage());
-        }
+
+        System.out.println("Введите название продукта");
+        // чтение построчно
+        String nameProduct = scanner.next();
+//            while ((nameProduct = br.readLine()) != null) {
+//            }
+        add(new ItemProduct(++lastId, nameProduct));
     }
 
-    public void deleteProduct(){
-        String nameProduct = "";
-        try(BufferedReader br = new BufferedReader ( new InputStreamReader(System.in) ))
-        {
-            System.out.println("Введите название продукта");
-            // чтение построчно
-            while ((nameProduct = br.readLine()) != null) {
+    public void deleteProduct(Scanner scanner){
+
+        System.out.println("Введите название продукта");
+        // чтение построчно
+        String nameProduct = scanner.next();
+
+        for (ItemProduct item : items) {
+            if (nameProduct.equals(item.getNameProduct())) {
+                remove(item);
+                break;
             }
-            for (ItemProduct item : items) {
-                if (nameProduct.equals(item.getNameProduct())) {
-                    remove(item);
-                    break;
-                }
-            }
-        }
-        catch(IOException ex){
-            System.out.println(ex.getMessage());
         }
     }
 
@@ -96,7 +84,8 @@ public class ListProducts extends Base<ItemProduct> {
         try (BufferedWriter bw = new BufferedWriter( new FileWriter(filePath) )){
             items.forEach(itemProduct -> {
                 try {
-                    bw.write(toString());
+                    bw.write(itemProduct.toString());
+                    bw.newLine();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -106,21 +95,32 @@ public class ListProducts extends Base<ItemProduct> {
         }
     }
 
-    public void selectedProduct(){
-        int x = 0;
-        Scanner scanner = new Scanner(System.in);
+    public int selectedProduct(Scanner scanner){
+        int id = 0;
         System.out.println("Введите ID  продукта");
-        String s = scanner.next();
+        id = scanner.nextInt();
         try {
-            x = Integer.parseInt(s);
-            if ( x < countItems()){
-                System.out.println( findProductForId( x ) );
+            System.out.println( findProductForId( id ) );
+            System.out.println("1 - Купить продукт");
+            System.out.println("2 - Удалить продукт");
+            int x = scanner.nextInt();
+            if (x==1) {
+                return id;
             }
             else
-                System.out.println("Ввели неправильный ID");
+                if (x==2){
+                    for (ItemProduct item : items) {
+                        if (id==item.getId()) {
+                            remove(item);
+                            break;
+                        }
+                    }
+                    return 0;
+                }
         } catch (NumberFormatException e){
             System.out.println("Неверный ввод");
         }
+        return 0;
     }
 
     public int menuPrint(int number){

@@ -40,11 +40,11 @@ public class Market {
         for (int i = 0; i < RANDOM.nextInt(5) + 1; i++) {
             if (i%2==0) {
                 Fruits fruits = Fruits.getRandomFruits();
-                itemsProduct.add( new ItemProduct( lastId++, fruits.name() ));
+                itemsProduct.add( new ItemProduct( ++lastId, fruits.name() ));
             }
             else {
                 Meats meats = Meats.getRandomMeats();
-                itemsProduct.add( new ItemProduct( lastId++, meats.name() ));
+                itemsProduct.add( new ItemProduct( ++lastId, meats.name() ));
             }
         }
         itemsProduct.setLastId( lastId );
@@ -65,60 +65,59 @@ public class Market {
         Scanner scanner = new Scanner(System.in);
         int indexMenu = 1;
         int x = 0;
-        String s ="";
 
         while (x!=indexMenu){
+            indexMenu = 1;
             indexMenu = itemsProduct.menuPrint(indexMenu);
             indexMenu = itemsOrder.menuPrint(indexMenu);
             indexMenu = menuPrint(indexMenu);
-            System.out.printf("%s - Для выхода из приложения введите " + indexMenu +"%n");
-            s = scanner.next();
-
-            try {
-                x = Integer.parseInt(s);
-            } catch (NumberFormatException e){
-                System.out.println("Неверный ввод");
+            System.out.printf("%s - Для выхода из приложения введите;%n", indexMenu);
+            if (scanner.hasNextInt()) {
+                x = scanner.nextInt();
+                switch (x) {
+                    case 1:
+                        printListProducts();
+                        break;
+                    case 2:
+                        int id = itemsProduct.selectedProduct(scanner);
+                        if (id>0){
+                            itemsOrder.add(new Order(id));
+                        };
+                        break;
+                    case 3:
+                        itemsProduct.manualProductInput(scanner);
+                        break;
+                    case 4:
+                        itemsProduct.deleteProduct(scanner);
+                        break;
+                    case 5:
+                        printListOrders();
+                        break;
+                    case 6:
+                        //.deleteProduct();
+                        break;
+                    case 7:
+                        createFoods();
+                        break;
+                    case 8:
+                        itemsProduct.saveProducts(FILEPATH_PRODUCTS);
+                        break;
+                    case 9:
+                        itemsProduct.loadProducts(FILEPATH_PRODUCTS);
+                        break;
+                    case 10:
+                        itemsOrder.saveOrders(FILEPATH_ORDERS);
+                        break;
+                    case 11:
+                        itemsOrder.loadOrders(FILEPATH_ORDERS);
+                        break;
+                }
             }
-
-            switch (x){
-                case 1:
-                    printListProducts();
-                    break;
-                case 2:
-                    itemsProduct.selectedProduct();
-                    break;
-                case 3:
-                    itemsProduct.manualProductInput();
-                    break;
-                case 4:
-                    itemsProduct.deleteProduct();
-                    break;
-                case 5:
-                    printListOrders();
-                    break;
-                case 6:
-                    //.deleteProduct();
-                    break;
-                case 7:
-                    createFoods();
-                    break;
-                case 8:
-                    itemsProduct.saveProducts(FILEPATH_PRODUCTS);
-                    break;
-                case 9:
-                    itemsProduct.loadProducts(FILEPATH_PRODUCTS);
-                    break;
-                case 10:
-                    itemsOrder.saveOrders(FILEPATH_ORDERS);
-                    break;
-                case 11:
-                    itemsOrder.loadOrders(FILEPATH_ORDERS);
-                    break;
-            }
+            System.out.println();
         }
     }
 
-    public int menuPrint(int number){
+    private int menuPrint(int number){
         System.out.printf("%s - Привезти новые продукты;%n", number++);
         System.out.printf("%s - Сохранить список продуктов;%n", number++);
         System.out.printf("%s - Загрузить список покупок;%n", number++);

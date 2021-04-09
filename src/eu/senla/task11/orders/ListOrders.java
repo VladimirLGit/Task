@@ -31,7 +31,8 @@ public class ListOrders extends Base<Order> {
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(filePath))){
             items.forEach(orderProduct -> {
                 try {
-                    bw.write(toString());
+                    bw.write(orderProduct.toString());
+                    bw.newLine();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
