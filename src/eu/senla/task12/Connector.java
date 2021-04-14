@@ -12,7 +12,7 @@ public class Connector {
     private final String PASSWORD = "root";
     private final String DB_URL = "jdbc:mysql://127.0.0.1:3306/users";
     //private Connection connection = null;
-    public PreparedStatement preparedStatement = null;
+    //public PreparedStatement preparedStatement = null;
 
     public Connection getConnection() {
         Properties props = new Properties();
