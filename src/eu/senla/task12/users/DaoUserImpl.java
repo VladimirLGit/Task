@@ -10,6 +10,18 @@ import java.util.List;
 public class DaoUserImpl implements Dao {
     private Connector conn;
 
+    private boolean isExistsTable(String nameTable){
+        final String QUERY = "Select * FROM " + nameTable + ";";
+        try (Connection con = conn.getConnection();
+             Statement query =  con.createStatement();) {
+            ResultSet rs = query.executeQuery(QUERY);
+            return rs.next();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        return false;
+    }
     public boolean createTableUsers(){
         final String QUERY ="CREATE TABLE users (\n" +
                 " id int(10) NOT NULL AUTO_INCREMENT,\n" +
@@ -17,6 +29,8 @@ public class DaoUserImpl implements Dao {
                 " password varchar(24) NOT NULL,\n" +
                 " PRIMARY KEY (id)\n" +
                 ");";
+        if (isExistsTable("users"))
+            return false;
         try(Connection con = conn.getConnection();
             Statement stmt = con.createStatement();) {
             boolean execute = stmt.execute(QUERY);
@@ -33,12 +47,24 @@ public class DaoUserImpl implements Dao {
 
     @Override
     public User create(User user) {
-        return new User(user.getName(), user.getPassword());
+        final String QUERY = "INSERT INTO users (login, password) VALUES (?,?)";
+        try (Connection con = conn.getConnection();){
+           PreparedStatement preparedStatement = con.prepareStatement(QUERY);
+            preparedStatement.setString(1, user.getName());
+            preparedStatement.setString(2, user.getPassword());
+            boolean execute = preparedStatement.execute();
+            if (execute) {
+                return new User(user.getName(), user.getPassword());
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return null;
     }
 
     @Override
     public User read(User user) {
-        return null;
+        return read(user.getName(), user.getPassword());
     }
 
     @Override

@@ -10,7 +10,7 @@ public class Connector {
     private final String driver = "com.mysql.jdbc.Driver";
     private final String USERNAME = "root";
     private final String PASSWORD = "root";
-    private final String DB_URL = "jdbc:mysql://127.0.0.1:3306/users";
+    private final String DB_URL = "jdbc:mysql://127.0.0.1:3306/myBase";
     //private Connection connection = null;
     //public PreparedStatement preparedStatement = null;
 

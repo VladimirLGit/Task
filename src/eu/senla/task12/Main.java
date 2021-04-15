@@ -4,10 +4,14 @@
 
 package eu.senla.task12;
 
+import eu.senla.task12.users.DaoUserImpl;
+import eu.senla.task12.users.User;
+
 public class Main {
     public static void main(String[] args) {
-
-
+        DaoUserImpl daoUser = new DaoUserImpl();
+        daoUser.createTableUsers();
+        daoUser.create(new User("Ivan", "qwerty"));
     }
 
 
