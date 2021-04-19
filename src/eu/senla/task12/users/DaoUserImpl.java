@@ -69,7 +69,7 @@ public class DaoUserImpl implements Dao {
 
     @Override
     public User read(String name, String password) {
-        final String QUERY = "Select * FROM users WHERE login = " + name +" AND password = " + password + ";";
+        final String QUERY = "Select * FROM users WHERE login = " + '"' + name + '"' +" AND password = " + '"' + password + '"' + ";";
         try (Connection con = conn.getConnection();
              Statement query =  con.createStatement();) {
             ResultSet rs = query.executeQuery(QUERY);
@@ -88,16 +88,16 @@ public class DaoUserImpl implements Dao {
 
     @Override
     public User update(String name, User newUser) {
-        final String QUERY = "Select * FROM users WHERE login = " + name + ";";
+        final String QUERY = "Select * FROM users WHERE login = " + '"' + name + '"' + ";";
         try (Connection con = conn.getConnection();
              Statement query =  con.createStatement();) {
             ResultSet rs = query.executeQuery(QUERY);
             if (rs.next()) {
-                String QUERY2 = "UPDATE users SET login = " + newUser.getName() +
-                                ", password = " + newUser.getPassword() +
-                                " WHERE login = " + name + ";";
-                boolean execute = query.execute(QUERY2);
-                if (execute){
+                String QUERY2 = "UPDATE users SET login = " + '"' +newUser.getName() + '"' +
+                                ", password = " + '"' + newUser.getPassword() + '"' +
+                                " WHERE login = " + '"' + name + '"' + ";";
+                int execute = query.executeUpdate(QUERY2);
+                if (execute>0){
                     System.out.println("Update login as " + name);
                     return new User(newUser.getName(), newUser.getPassword());
                 } else {
@@ -114,16 +114,16 @@ public class DaoUserImpl implements Dao {
 
     @Override
     public boolean delete(String name, String password) {
-        final String QUERY = "Delete FROM users WHERE login = " + name +" AND password = " + password + ";";
+        final String QUERY = "Delete FROM users WHERE login = " + '"' + name + '"' +" AND password = " + '"' + password + '"' + ";";
         try (Connection con = conn.getConnection();
              Statement query =  con.createStatement();) {
-            boolean execute = query.execute(QUERY);
-            if (execute) {
+            int execute = query.executeUpdate(QUERY);
+            if (execute>0) {
                 System.out.println("Delete login as " + name);
             } else {
                 System.out.println("Wrong login or password");
             }
-            return execute;
+            return execute>0;
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
